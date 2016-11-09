@@ -72,7 +72,7 @@ public class Application2 {
 
 //short operations
     public static void shortOperations() {
-    
+     
         short s=35;
         System.out.println(s);
     }

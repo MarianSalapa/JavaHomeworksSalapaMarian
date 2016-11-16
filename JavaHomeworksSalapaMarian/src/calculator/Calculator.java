@@ -29,7 +29,7 @@ public class Calculator {
             System.out.print("Insert second number(type AC to reset calculation) :");
             num2 = InputNo.inputText();
             if (num2.equals("AC")) {
-                returnNo = 2;
+                returnNo = 2; //return 2 in AC, restart calculator
             } else if ((InputNo.isNumeric(num2))) {
                 System.out.println("Choose operation: + - * \\");
                 String operatorInput = InputNo.inputText();

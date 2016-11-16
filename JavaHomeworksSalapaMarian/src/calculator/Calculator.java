@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Calcuator class
  */
 package calculator;
 
 import java.util.Scanner;
 
 /**
+ * implements a computer
  *
  * @author MMM
  */
@@ -15,48 +14,47 @@ public class Calculator {
 
     static Scanner userInput = new Scanner(System.in);
 
-    public static void calculator() {
-        int num1, num2;
-        System.out.print("Insert first number :");
-        num1 = userInput.nextInt();
-        System.out.print("Insert second number :");
-        num2 = userInput.nextInt();
+    public static int calculator() {
+        String num1, num2;
+        int returnNo = 999;
+        boolean checkOp = false;
+        String operatori[] = {"+", "-", "*", "\\"};
 
-        System.out.println("Choose operation: + - * \\");
-        String opeartorInput = userInput.next();
-       
-        if (opeartorInput.equals("+")) {
-            System.out.println(num1+"+"+num2+"=" + addition(num1, num2));
+        System.out.print("\nInsert first number(type AC to reset calculation) :");
+        num1 = InputNo.inputText();
+        if (num1.equals("AC")) {
+            returnNo = 2;
+        } else if (InputNo.isNumeric(num1)) {
+
+            System.out.print("Insert second number(type AC to reset calculation) :");
+            num2 = InputNo.inputText();
+            if (num2.equals("AC")) {
+                returnNo = 2;
+            } else if ((InputNo.isNumeric(num2))) {
+                System.out.println("Choose operation: + - * \\");
+                String operatorInput = InputNo.inputText();
+                for (String k : operatori) {
+                    if (k.equals(operatorInput)) {
+
+                        Result objResult = new Result();
+                        System.out.println(num1 + operatorInput + num2 + "=" + objResult.result(num1, num2, operatorInput));
+                        checkOp = true;
+                    }
+
+                }
+                if (!checkOp) {
+                    System.out.println("Unknown operation");
+                    returnNo = 0;
+                }
+            } else {
+                System.out.println("Number inserted is not a double");
+                returnNo = 0;
+            }
+
+        } else {
+            System.out.println("Number inserted is not a double");
+            returnNo = 0;
         }
-        if (opeartorInput.equals("-")) {
-            System.out.println(num1+"-"+num2+"=" + decrease(num1, num2));
-        }
-
-        if (opeartorInput.equals("*")) {
-            System.out.println(num1+"*"+num2+"=" + multiplication(num1, num2));
-        }
-
-        if (opeartorInput.equals("\\")) {
-            System.out.println(num1+"\\"+num2+"=" + division(num1, num2));
-
-        }
-
+        return returnNo;
     }
-
-    public static int addition(int a, int b) {
-        return a + b;
-    }
-
-    public static int decrease(int a, int b) {
-        return a - b;
-    }
-
-    public static int multiplication(int a, int b) {
-        return a * b;
-    }
-
-    public static double division(int a, int b) {
-        return a / b;
-    }
-
 }

@@ -5,10 +5,10 @@
  */
 package calculator;
 
-/**
- *
- * @author MMM
- */
+/*/*
+ ** calculates and return result
+ **@author MMM
+ **/
 public class Result {
 
     public double result(String numS1, String numS2, String op) {

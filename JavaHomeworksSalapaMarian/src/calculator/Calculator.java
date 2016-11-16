@@ -55,6 +55,6 @@ public class Calculator {
             System.out.println("You did not inserted a number");
             returnNo = 0;
         }
-        return returnNo;
+        return returnNo; // return 0 if text inseted in not a number or operator is not +-\*
     }
 }

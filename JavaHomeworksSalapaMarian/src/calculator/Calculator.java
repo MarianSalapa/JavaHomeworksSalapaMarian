@@ -52,7 +52,7 @@ public class Calculator {
             }
 
         } else {
-            System.out.println("Number inserted is not a double");
+            System.out.println("You did not inserted a number");
             returnNo = 0;
         }
         return returnNo;

@@ -32,7 +32,7 @@ public class MainClass {
         Application3.classBooleanOperations();
         Application3.classCharacterOperations();
    */
-    calculator();
+
     
     }
     

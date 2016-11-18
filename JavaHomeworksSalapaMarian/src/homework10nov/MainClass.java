@@ -13,8 +13,8 @@ import static calculator.Calculator.calculator;
  */
 public class MainClass {
     public static void main(String[] args) {
- /*       Application1.yourName();
-        
+      
+        Application1.yourName();
         Application2.intOperations();
         Application2.longOperations();
         Application2.floatOperations();
@@ -31,8 +31,6 @@ public class MainClass {
         Application3.classDoubleOperations();
         Application3.classBooleanOperations();
         Application3.classCharacterOperations();
-   */
-
     
     }
     

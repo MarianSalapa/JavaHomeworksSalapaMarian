@@ -34,7 +34,7 @@ public class Calculator {
                 if (num2.equals("AC")) {
                     returnNo = 2; //return 2 in AC, restart calculator
                 } else if ((InputNo.isNumeric(num2))) {
-                    System.out.println("Press \"=\" to display the result!");
+                    System.out.println("Press \"=\" to display the result! ");
                     String resultInput = InputNo.inputText();
                     if (resultInput.equals("=")) {
                         Result objResult = new Result();

@@ -38,7 +38,9 @@ public class Calculator {
                     String resultInput = InputNo.inputText();
                     if (resultInput.equals("=")) {
                         Result objResult = new Result();
-                        System.out.println("------------------------------------\n    "+num1 + operatorInput + num2 + "=" + objResult.result(num1, num2, operatorInput));
+                        System.out.print("------------------------------------\n    "+num1 + operatorInput + num2 + "=");
+                        System.out.printf("%.2f", objResult.result(num1, num2, operatorInput));
+                        System.out.print("\n");
                     } else {
                         System.out.println("------------------------------------\nYou din not pushed \" =\" sign ");
                         returnNo = 0; //terminate the application

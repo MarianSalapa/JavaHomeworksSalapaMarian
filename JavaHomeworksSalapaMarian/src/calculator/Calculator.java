@@ -16,12 +16,12 @@ public class Calculator {
         int returnNo = 999;
         boolean checkOp = false;
         String operatori[] = {"+", "-", "*", "\\"};
-        System.out.print("\nInsert first number(type AC to reset calculation) :");
+        System.out.print("------------------------------------\nInsert first number(AC to reset):  ");
         num1 = InputNo.inputText();
         if (num1.equals("AC")) {
             returnNo = 2;
         } else if (InputNo.isNumeric(num1)) {
-            System.out.println("Choose operation: + - * \\");
+            System.out.print("Choose operation: + - * \\ :_______ ");
             String operatorInput = InputNo.inputText();
             for (String k : operatori) {
                 if (k.equals(operatorInput)) {
@@ -29,34 +29,34 @@ public class Calculator {
                 }
             }
             if (checkOp) {
-                System.out.print("Insert second number(type AC to reset calculation) :");
+                System.out.print("Insert second number(AC to reset): ");
                 num2 = InputNo.inputText();
                 if (num2.equals("AC")) {
                     returnNo = 2; //return 2 in AC, restart calculator
                 } else if ((InputNo.isNumeric(num2))) {
-                    System.out.println("Press \"=\" to display the result! ");
+                    System.out.print("Press \"=\" to display the result!  ");
                     String resultInput = InputNo.inputText();
                     if (resultInput.equals("=")) {
                         Result objResult = new Result();
-                        System.out.println(num1 + operatorInput + num2 + "=" + objResult.result(num1, num2, operatorInput));
+                        System.out.println("------------------------------------\n    "+num1 + operatorInput + num2 + "=" + objResult.result(num1, num2, operatorInput));
                     } else {
-                        System.out.println("You din not pushed \" =\" sign ");
+                        System.out.println("------------------------------------\nYou din not pushed \" =\" sign ");
                         returnNo = 0; //terminate the application
                     }
                 } else {
-                    System.out.println("Number inserted is not a double");
+                    System.out.println("------------------------------------\nYou did not inserted a number");
                     returnNo = 0; //terminate the application
                 }
             } else if (!checkOp) {
                 if (operatorInput.equals("AC")) {
                     returnNo = 2; //return 2 in AC, restart calculator
                 } else {
-                    System.out.println("Unknown operation");
+                    System.out.println("------------------------------------\nUnknown operation");
                     returnNo = 0; //terminate the application
                 }
             }
         } else {
-            System.out.println("You did not inserted a number");
+            System.out.println("------------------------------------\nYou did not inserted a number");
             returnNo = 0; //terminate the application
         }
         return returnNo; // return 0 if text inserted in not a number or operator is not +-\*

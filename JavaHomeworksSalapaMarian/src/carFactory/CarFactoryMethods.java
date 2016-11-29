@@ -51,7 +51,7 @@ public class CarFactoryMethods {
                     Car2 newCar = new Car2(newOrdersList.get(i).getCarOrdered(), colorOrdered, (short) 140);
 
                     newManufacturedCarsList.add(newCar);
-                    System.out.println("Car " + newOrdersList.get(i).getCarOrdered() + " delivered!");
+                    System.out.println("A "+colorOrdered.toString().toLowerCase() +" " + newOrdersList.get(i).getCarOrdered() + " was delivered!");
                     newOrdersList.get(i).setDelivered(true);
                     checkOrder = 1;
                 }

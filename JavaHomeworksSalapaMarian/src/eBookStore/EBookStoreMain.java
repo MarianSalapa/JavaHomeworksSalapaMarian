@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author MMM
  */
-public class ClassMainEBookStore {
+public class EBookStoreMain {
 
     public static void main(String[] args) {
         List<EBook> eBookList = new ArrayList<EBook>();
@@ -40,10 +40,10 @@ public class ClassMainEBookStore {
                     MenuEBook.deleteEBook(eBookList);
                     break;
                 case 4:
-                    AuthorListMethods.addAuthor(authorList);
+                    AuthorsListM.addAuthor(authorList);
                     break;
                 case 5:
-                    AuthorListMethods.printAuthorsList(authorList);
+                    AuthorsListM.printAuthorsList(authorList);
                 case 6:
                     MenuEBook.rateEBook(eBookList);
                     break;

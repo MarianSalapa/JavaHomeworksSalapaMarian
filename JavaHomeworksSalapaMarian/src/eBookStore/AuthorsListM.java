@@ -9,20 +9,8 @@ import java.util.List;
  * Implements methods of author's list
  * @author MMM
  */
-public class AuthorListMethods {
-        public static void printMenu() {
-        String menu1Text = "\n_______________eBook_Menu_______________"
-                + "\n| Add eBook__________________1         |"
-                + "\n| List eBook_________________2         |"
-                + "\n| Delete eBook_______________3         |"
-                + "\n| New Author_________________4         |"
-                + "\n| Author's list______________5         |"
-                + "\n| To exit press______________0         |"
-                + "\n| your choice________";
-        System.out.print(menu1Text);
-    }
-
-    public static void addAuthor(List<Author> newAuthorList) {
+public class AuthorsListM {
+        public static void addAuthor(List<Author> newAuthorList) {
         String name, surname;
         System.out.print("----------------------------------------\n"
                 + "________Add new author________"
@@ -55,7 +43,5 @@ public class AuthorListMethods {
         }
         MenuEBook.zeroToExit();
     }
-
-   
 
 }

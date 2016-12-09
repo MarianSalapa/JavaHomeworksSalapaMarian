@@ -8,7 +8,7 @@ package carFactory;
  *
  * @author MMM
  */
-public class Car2 {
+ class Car2 {
 
     //create enumaeratiom a new type in java
     public enum Color {
@@ -18,13 +18,13 @@ public class Car2 {
     private Color color;
     private short speed;
 
-    public Car2() {
+    Car2() {
         name = "Default car name";
         color = Color.GREEN;
         speed = 100;
     }
 
-    public Car2(String newName, Color newColor, short newSpeed) {
+    Car2(String newName, Color newColor, short newSpeed) {
         name = newName;
         color = newColor;
         speed = newSpeed;

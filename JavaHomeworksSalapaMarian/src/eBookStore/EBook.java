@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author MMM
  */
-public class EBook {
+class EBook {
 
     public enum Category 
         {TECHNICAL, NOVELS, ART_ALBUMS, POETRY
@@ -28,7 +28,7 @@ public class EBook {
 
 
     
-    public EBook(String title, int noOfPages, double price, double rating) {
+    EBook(String title, int noOfPages, double price, double rating) {
         noOfeBook++;
         this.codeISBN="eB"+Integer.toString(noOfeBook);
         this.title = title;

@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author MMM
  */
-public class EBookStoreMain {
+class EBookStoreMain {
 
     public static void main(String[] args) {
         List<EBook> eBookList = new ArrayList<EBook>();

@@ -75,15 +75,34 @@ public class MenuEBook {
                 if (!(rating >= 1) || !(rating <= 5)) {
                     System.out.println("Invalid value! Rating set to 2.5");
                     rating = 2.5;
+                } else {
+
+                    if (category.toLowerCase().equals("novels")) {
+                        EBook newEBook = new Novels(title, noOfPages, price, rating);
+                        newEBook.authors.addAll(bookAuthorList);
+                        newEBookList.add(newEBook);
+                    }
+                    if (category.toLowerCase().equals("art_albums")) {
+                        EBook newEBook = new Art_Albums(title, noOfPages, price, rating);
+                        newEBook.authors.addAll(bookAuthorList);
+                        newEBookList.add(newEBook);
+                    }
+                    if (category.toLowerCase().equals("technical")) {
+
+                        EBook newEBook = new Technical(title, noOfPages, price, rating);
+                        newEBook.authors.addAll(bookAuthorList);
+                        newEBookList.add(newEBook);
+                    }
+                    if (category.toLowerCase().equals("poetry")) {
+                        EBook newEBook = new Poetry(title, noOfPages, price, rating);
+                        newEBook.authors.addAll(bookAuthorList);
+                        newEBookList.add(newEBook);
+                    }
+
+                    System.out.println("Book " + title + " added");
+
+                    zeroToExit();
                 }
-
-                EBook newEBook = new EBook(title, noOfPages, price, rating);
-                newEBook.authors.addAll(bookAuthorList);
-                newEBookList.add(newEBook);
-
-                System.out.println("Book " + title + " added");
-
-                zeroToExit();
             } else {
                 System.out.println("Invalid author");
             }
@@ -103,7 +122,8 @@ public class MenuEBook {
                 System.out.print(
                         "----------------------------------------\n");
 
-                System.out.println(newEBookList.get(i).getTitle() + "\n   eBook code: "
+                System.out.println(newEBookList.get(i).getTitle() + " , " 
+                        + newEBookList.get(i).getBookCategory() + "\n   eBook code: "
                         + newEBookList.get(i).getCodeISBN()
                         + "\n   eBook title:" + newEBookList.get(i).getTitle());
                 printAutorEBook(newEBookList.get(i).getAuthors());

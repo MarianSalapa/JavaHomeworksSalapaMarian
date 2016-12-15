@@ -91,5 +91,9 @@ class EBook {
     public int getNoOfRatings() {
         return noOfRatings;
     }
+
+    public Category getBookCategory() {
+        return bookCategory;
+    }
     
 }

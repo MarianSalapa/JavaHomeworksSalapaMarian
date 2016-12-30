@@ -27,35 +27,5 @@ public class InputCheck {
 
     }
 
-    static int InputChoiceCheck() {
-        int choice = 5;
-        boolean check = true;
-
-        while (check) {
-            check = false;
-            System.out.print("\n             your choice is___");
-            try {
-                choice = userInput.nextInt();
-
-
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid type!");
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid value!");
-            }
-        }
-        return choice;
-    }
-
-    public static boolean checkAcceptedValue(int newChoice) {
-        int[] acceptedValues = {1, 2, 3, 4, 0};
-        boolean checkV = false;
-
-        for (int k : acceptedValues) {
-            if (k == newChoice) {
-                checkV = true;
-            }
-        }
-        return checkV;
-    }
+   
 }

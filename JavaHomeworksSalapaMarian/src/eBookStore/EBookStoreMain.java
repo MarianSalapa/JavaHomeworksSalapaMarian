@@ -44,6 +44,7 @@ class EBookStoreMain {
                     break;
                 case 5:
                     AuthorsListM.printAuthorsList(authorList);
+                    break;
                 case 6:
                     MenuEBook.rateEBook(eBookList);
                     break;

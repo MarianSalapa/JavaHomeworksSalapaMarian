@@ -39,7 +39,7 @@ public class MenuEBook {
 
         System.out.print("----------------------------------------\n"
                 + "_________Add new eBook________"
-                + "\nInsert title:");
+                + "\nInsert title: ");
         title = userInput.next();
         System.out.print("Existent categories:\n"
                 + "> technical, novels, art_albums, poetry"
@@ -122,7 +122,7 @@ public class MenuEBook {
                 System.out.print(
                         "----------------------------------------\n");
 
-                System.out.println(newEBookList.get(i).getTitle() + " , " 
+                System.out.println(newEBookList.get(i).getTitle() + ", "
                         + newEBookList.get(i).getBookCategory() + "\n   eBook code: "
                         + newEBookList.get(i).getCodeISBN()
                         + "\n   eBook title:" + newEBookList.get(i).getTitle());
@@ -145,19 +145,20 @@ public class MenuEBook {
 
     public static void deleteEBook(List<EBook> newEBookList) {
         String codeDelete;
+        boolean checkCode = false;
         System.out.print(
                 "----------------------------------------\n"
                 + "Code of the eBook to be deleted: ");
         codeDelete = userInput.next();
         for (int i = 0; i < newEBookList.size(); i++) {
             if (codeDelete.equals(newEBookList.get(i).getCodeISBN())) {
+                checkCode = true;
                 newEBookList.remove(i);
                 System.out.println("The book " + codeDelete + " was deleted");
-
-            } else {
-                System.out.println("Invalid code");
-
             }
+        }
+        if (!checkCode) {
+            System.out.println("Invalid code");
         }
         zeroToExit();
     }
@@ -210,13 +211,16 @@ public class MenuEBook {
 
     public static void rateEBook(List<EBook> newEBookList) {
         String codeRated;
+        boolean checkCode=false;
         double newRating;
+        
         System.out.print(
                 "----------------------------------------\n"
                 + "Code of the eBook to be rated: ");
         codeRated = userInput.next();
         for (int i = 0; i < newEBookList.size(); i++) {
             if (codeRated.equals(newEBookList.get(i).getCodeISBN())) {
+                
                 int ratings = newEBookList.get(i).getNoOfRatings();
                 ratings++;
                 newEBookList.get(i).setNoOfRatings(ratings);
@@ -231,9 +235,10 @@ public class MenuEBook {
                     System.out.println("Invalid rating!");
 
                 }
-            } else {
+        
+            }
+            if(!checkCode){
                 System.out.println("Invalid code !");
-
             }
         }
         zeroToExit();

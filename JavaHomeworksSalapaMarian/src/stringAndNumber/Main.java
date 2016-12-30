@@ -1,14 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Main class
  */
 package stringAndNumber;
 
 import java.util.Scanner;
 
 /**
- *
+ * 
  * @author MMM
  */
 public class Main {
@@ -49,15 +47,18 @@ public class Main {
                 + "String mom = \"mom.\";\n");
         System.out.println("hi + mom = " + hi + mom);
         System.out.println("hi.concat(\"mom.\")=" + hi.concat(mom) + "\n");
+        
         System.out.println("5 Write a program that computes your initials from your full name and displays them.");
         System.out.println("Please input your full name:");
         yourNameInput = userInput.nextLine();
         String[] yourNameInputSplited = yourNameInput.split(" ");
         System.out.print("Your initial are: ");
+        
         for (String k : yourNameInputSplited) {
             System.out.print(k.substring(0, 1));
         }
-    System.out.println(" ");
+    
+        System.out.println(" ");
     }
 
 }

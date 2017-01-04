@@ -41,19 +41,20 @@ public class WriteReadAddDel {
 
                 System.out.print("Insert text: ");
                 text = FilesManagement.userInput.next();
-
-                try {
+                if (text.length() == 0) {
+                    throw new IllegalArgumentException("You did not inserted any text");
+                } else {
                     try (PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
                         writer.println(text);
+                    } catch (IOException e) {
+                        System.out.println("File not created");
                     }
-                } catch (IOException e) {
-                    System.out.println("File not created");
                 }
-                zeroToExit();
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        zeroToExit();
     }
 
     public static void readFromFile() {
@@ -107,12 +108,17 @@ public class WriteReadAddDel {
                 System.out.print("Insert text: ");
                 text = FilesManagement.userInput.next();
 
-                try (FileWriter fstream = new FileWriter(fileName, true);
-                        BufferedWriter out = new BufferedWriter(fstream)) {
-                    out.write(text);
-                    out.newLine();
-                } catch (FileNotFoundException e) {
-                    System.out.println(e.getMessage());
+                if (text.length() == 0) {
+                    throw new IllegalArgumentException("You did not inserted any text");
+                } else {
+
+                    try (FileWriter fstream = new FileWriter(fileName, true);
+                            BufferedWriter out = new BufferedWriter(fstream)) {
+                        out.write(text);
+                        out.newLine();
+                    } catch (FileNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             }
         } catch (IOException e) {
@@ -121,7 +127,7 @@ public class WriteReadAddDel {
         zeroToExit();
     }
 
-    public static void deleteContent() {
+    public static void deleteContent() throws IOException {
         printBorder();
         System.out.println("\n_________delete_content___________");
         String fileToDeleteName;
@@ -130,17 +136,31 @@ public class WriteReadAddDel {
 
         try {
             FileInputStream file = new FileInputStream(fileToDeleteName);
-            try (PrintWriter writer = new PrintWriter(fileToDeleteName)) {
-                writer.print("");
-                System.out.println("Content deleted");
-            } catch (IOException e) {
-                System.out.println("Content not deleted");
+            if (!ifFileExists(fileToDeleteName)) {
+                throw new IOException("No content!\n");
+            } else {
+
+                try (PrintWriter writer = new PrintWriter(fileToDeleteName)) {
+                    writer.print("");
+                    System.out.println("Content deleted");
+                } catch (IOException e) {
+                    System.out.println("Content not deleted");
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
         zeroToExit();
 
+    }
+
+    public static boolean ifFileExists(String fileName) throws FileNotFoundException, IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        if (br.readLine() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public static void printMenu() {

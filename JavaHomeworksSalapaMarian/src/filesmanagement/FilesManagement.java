@@ -3,9 +3,7 @@
  */
 package filesmanagement;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -28,26 +26,15 @@ public class FilesManagement {
                     WriteReadAddDel.writeToFile();
                     break;
                 case 2:
-                    try {
-                        WriteReadAddDel.readFromFile();
-                    } catch (IOException e) {
-                        System.out.println("File not found");
-                    }
+                    WriteReadAddDel.readFromFile();
                     break;
                 case 3:
-                    try {
-                        WriteReadAddDel.addToFile();
-                    } catch (IOException e) {
-                        System.out.println("File not found");
-                    }
+                    WriteReadAddDel.addToFile();
                     break;
 
                 case 4:
-                    try {
-                        WriteReadAddDel.deleteContent();
-                    } catch (IOException e) {
-                        System.out.println("File not found");
-                    }
+                   WriteReadAddDel.deleteContent();
+                   
                     break;
 
                 case 0:

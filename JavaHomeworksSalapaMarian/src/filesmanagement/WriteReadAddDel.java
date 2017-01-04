@@ -5,6 +5,7 @@ package filesmanagement;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,23 +27,36 @@ public class WriteReadAddDel {
     public static void writeToFile() {
         printBorder();
         System.out.println("\n___________write_to_file__________");
-        String text, fileName;
+        String text, fileNameInput;
         System.out.print("\nInsert file name: ");
-        fileName = FilesManagement.userInput.next();
-        System.out.print("Insert text: ");
-        text = FilesManagement.userInput.next();
+
+        fileNameInput = FilesManagement.userInput.next();
+        File fileName = new File(fileNameInput);
 
         try {
-            try (PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
-                writer.println(text);
+            if (fileName.exists()) {
+                throw new IOException("File already exists!\n");
+
+            } else {
+
+                System.out.print("Insert text: ");
+                text = FilesManagement.userInput.next();
+
+                try {
+                    try (PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+                        writer.println(text);
+                    }
+                } catch (IOException e) {
+                    System.out.println("File not created");
+                }
+                zeroToExit();
             }
         } catch (IOException e) {
-            System.out.println("File not created");
+            System.out.println(e.getMessage());
         }
-        zeroToExit();
     }
 
-    public static void readFromFile() throws FileNotFoundException, IOException {
+    public static void readFromFile() {
         printBorder();
         System.out.println("\n________copy_text_from_file_______");
         String fileName;
@@ -59,36 +73,55 @@ public class WriteReadAddDel {
                 line = br.readLine();
             }
             String textFromFile = sb.toString();
-            System.out.println("\nContent of file\n----------------------------------\n"
-                    +textFromFile+"----------------------------------");
+
+            if (textFromFile.length() > 0) {
+                System.out.println("\nContent of file\n----------------------------------\n"
+                        + textFromFile + "----------------------------------");
+            } else {
+                System.out.println("\nNo content to show");
+            }
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
 
         zeroToExit();
     }
 
-    public static void addToFile() throws IOException {
+    public static void addToFile() {
         printBorder();
         System.out.println("\n________add_text_to_file__________");
-        String text, fileName;
+        String text, fileNameInput;
         System.out.print("\nInsert file name: ");
-        fileName = FilesManagement.userInput.next();
-        System.out.print("Insert text: ");
-        text = FilesManagement.userInput.next();
 
-        try (FileWriter fstream = new FileWriter(fileName, true);
-                BufferedWriter out = new BufferedWriter(fstream)) {
-            out.write(text);
-            out.newLine();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+        fileNameInput = FilesManagement.userInput.next();
+        File fileName = new File(fileNameInput);
+
+        try {
+            if (!fileName.exists()) {
+                throw new IOException("File not found!\n");
+
+            } else {
+                System.out.print("Insert text: ");
+                text = FilesManagement.userInput.next();
+
+                try (FileWriter fstream = new FileWriter(fileName, true);
+                        BufferedWriter out = new BufferedWriter(fstream)) {
+                    out.write(text);
+                    out.newLine();
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-
         zeroToExit();
     }
 
-    public static void deleteContent() throws IOException {
+    public static void deleteContent() {
         printBorder();
         System.out.println("\n_________delete_content___________");
         String fileToDeleteName;
@@ -105,11 +138,10 @@ public class WriteReadAddDel {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
-           
-            zeroToExit();
         }
+        zeroToExit();
+
     }
-    
 
     public static void printMenu() {
         System.out.print("\n__Menu___________________________"

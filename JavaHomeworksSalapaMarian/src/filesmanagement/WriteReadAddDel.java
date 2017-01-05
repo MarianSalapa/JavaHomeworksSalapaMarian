@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
- * implements the following methods write in a file, read from file, add to file
+ * implements the following methods: write in a file, read from file, add to file
  * and delete content of a file
  *
  * @author MMM
@@ -30,7 +30,7 @@ public class WriteReadAddDel {
         String text, fileNameInput;
         System.out.print("\nInsert file name: ");
 
-        fileNameInput = FilesManagement.userInput.next();
+        fileNameInput = MenuChoice.userInput.next();
         File fileName = new File(fileNameInput);
 
         try {
@@ -40,7 +40,7 @@ public class WriteReadAddDel {
             } else {
 
                 System.out.print("Insert text: ");
-                text = FilesManagement.userInput.next();
+                text = MenuChoice.userInput.next();
                 if (text.length() == 0) {
                     throw new IllegalArgumentException("You did not inserted any text");
                 } else {
@@ -62,7 +62,7 @@ public class WriteReadAddDel {
         System.out.println("\n________copy_text_from_file_______");
         String fileName;
         System.out.print("\nInsert file name: ");
-        fileName = FilesManagement.userInput.next();
+        fileName = MenuChoice.userInput.next();
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             StringBuilder sb = new StringBuilder();
@@ -97,7 +97,7 @@ public class WriteReadAddDel {
         String text, fileNameInput;
         System.out.print("\nInsert file name: ");
 
-        fileNameInput = FilesManagement.userInput.next();
+        fileNameInput = MenuChoice.userInput.next();
         File fileName = new File(fileNameInput);
 
         try {
@@ -106,7 +106,7 @@ public class WriteReadAddDel {
 
             } else {
                 System.out.print("Insert text: ");
-                text = FilesManagement.userInput.next();
+                text = MenuChoice.userInput.next();
 
                 if (text.length() == 0) {
                     throw new IllegalArgumentException("You did not inserted any text");
@@ -127,12 +127,12 @@ public class WriteReadAddDel {
         zeroToExit();
     }
 
-    public static void deleteContent() throws IOException {
+    public static void deleteContent() {
         printBorder();
         System.out.println("\n_________delete_content___________");
         String fileToDeleteName;
         System.out.print("\nInsert file name: ");
-        fileToDeleteName = FilesManagement.userInput.next();
+        fileToDeleteName = MenuChoice.userInput.next();
 
         try {
             FileInputStream file = new FileInputStream(fileToDeleteName);
@@ -149,18 +149,26 @@ public class WriteReadAddDel {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
         zeroToExit();
 
     }
 
-    public static boolean ifFileExists(String fileName) throws FileNotFoundException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        if (br.readLine() == null) {
-            return false;
-        } else {
-            return true;
+    public static boolean ifFileExists(String fileName) {
+        boolean ifExists = false;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            ifExists = br.readLine() != null;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
+
+        return ifExists;
     }
 
     public static void printMenu() {
@@ -181,6 +189,6 @@ public class WriteReadAddDel {
 
     public static void zeroToExit() {
         System.out.print("\nType 0 to get back to the menu: ");
-        String exit = FilesManagement.userInput.next();
+        String exit = MenuChoice.userInput.next();
     }
 }

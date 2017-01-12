@@ -21,12 +21,10 @@ public class BookMeth {
         MenuCont.printBorder();
         System.out.print("Insert the name of the book: ");
         bookName = userInput.nextLine().trim();
-        
-        System.out.print("Insert the author of the book: ");
-        
-        author = userInput.nextLine().trim();
 
-        
+        System.out.print("Insert the author of the book: ");
+
+        author = userInput.nextLine().trim();
 
         if ((bookName.length() > 0) && (author.length() > 0)) {
             Book newBook = new Book(bookName, author);
@@ -40,17 +38,24 @@ public class BookMeth {
     }
 
     public static void printBookList(List<Book> newBookList) {
+        int noOfSpacesNeeded;
         MenuCont.printBorder();
 
         if (newBookList.size() > 0) {
-            System.out.println("Name\tAuthor\tRating");
+            System.out.print("Name              Author            Rating");
             for (int i = 0; i < newBookList.size(); i++) {
 
-                System.out.println(newBookList.get(i).getBookName()
-                        + "\t" + newBookList.get(i).getBookAuthor()
-                        + "\t" + newBookList.get(i).getBookRating());
+                System.out.print("\n" + newBookList.get(i).getBookName());
+                
+                noOfSpacesNeeded = 18 - newBookList.get(i).getBookName().length();
+                MenuCont.printSpaces(noOfSpacesNeeded);
+                System.out.print(newBookList.get(i).getBookAuthor());
+               
+                noOfSpacesNeeded = 18 - newBookList.get(i).getBookAuthor().length();
+                MenuCont.printSpaces(noOfSpacesNeeded);
+                System.out.print(newBookList.get(i).getBookRating());
             }
-
+            System.out.println("");
         } else {
             System.out.println("Nothing to display");
         }

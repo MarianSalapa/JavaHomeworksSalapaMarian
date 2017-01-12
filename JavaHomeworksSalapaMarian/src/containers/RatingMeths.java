@@ -41,7 +41,7 @@ public class RatingMeths {
                             System.out.println("Insert description: ");
                             userInput = new Scanner(System.in);
                             description = userInput.nextLine().trim();
-                            
+
                             Rating newRating = new Rating(rating, user_id, description);
                             newSoldBooks.put(newRating, BookMeth.getBook(newBookList, bookName));
                             BookMeth.recomputeRating(rating, BookMeth.getBook(newBookList, bookName));
@@ -74,11 +74,15 @@ public class RatingMeths {
         MenuCont.printBorder();
 
         if (!newSoldBooks.keySet().isEmpty()) {
-            System.out.println("Name\tStars\tUser_Id\tDescription");
+            System.out.print("Name           Stars User_Id Description");
 
             newSoldBooks.keySet().forEach((k) -> {
-                System.out.println(newSoldBooks.get(k).getBookName() + "\t" + k.getStars() + "\t" + k.getUser_id() + "\t" + k.getDescription());
+                System.out.print("\n" + newSoldBooks.get(k).getBookName());
+                int noOfSpacesNeeded = 15 - newSoldBooks.get(k).getBookName().length();
+                MenuCont.printSpaces(noOfSpacesNeeded);
+                System.out.print("  " + k.getStars() + "   " + k.getUser_id() + "  " + k.getDescription());
             });
+            System.out.println("");
         } else {
             System.out.println("No ratings recorded");
         }
@@ -100,16 +104,17 @@ public class RatingMeths {
         if (BookMeth.checkBookName(newBookList, bookName)) {
 
             if (!newSoldBooks.keySet().isEmpty()) {
-                System.out.println("Name\tStars\tUser_Id\tDescription");
+                System.out.print("Name           Stars User_Id Description");
 
                 newSoldBooks.keySet().forEach((k) -> {
                     if (bookName.equals(newSoldBooks.get(k).getBookName())) {
-                        System.out.println(newSoldBooks.get(k).getBookName()
-                                + "\t" + k.getStars() + "\t" + k.getUser_id()
-                                + "\t" + k.getDescription());
+                        System.out.print("\n" + newSoldBooks.get(k).getBookName());
+                        int noOfSpacesNeeded = 15 - newSoldBooks.get(k).getBookName().length();
+                        MenuCont.printSpaces(noOfSpacesNeeded);
+                        System.out.print("  " + k.getStars() + "   " + k.getUser_id() + "  " + k.getDescription());
                     }
                 });
-
+                System.out.println("");
             } else {
                 System.out.println("No ratings recorded");
             }

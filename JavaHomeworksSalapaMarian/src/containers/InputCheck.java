@@ -22,7 +22,8 @@ public class InputCheck {
             choice  = userInput.nextInt();
             
         } catch (InputMismatchException e) {
-            System.out.println("That's not a whole number");
+            
+            System.out.println("\nThis is not a whole number!");
 
         }
         return choice;

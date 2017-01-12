@@ -53,20 +53,22 @@ public class MenuCont {
                     BookMeth.printBookList(bookList);
                     break;
                 case 5:
-                    RatingMeths.addRating(bookList,userList,soldBooks);
+                    RatingMeths.addRating(bookList, userList, soldBooks);
                     break;
                 case 6:
                     RatingMeths.printRatings(soldBooks);
                     break;
                 case 7:
-                    RatingMeths.printBookRatings(soldBooks,bookList);
+                    RatingMeths.printBookRatings(soldBooks, bookList);
                     break;
-
+                case 8:
+                    break;
                 case 0:
                     break;
 
                 default:
-                    System.out.println("Invalid choice");
+                    
+                    System.out.println("\nInvalid choice!");
                     break;
             }
             printMenu();
@@ -75,21 +77,27 @@ public class MenuCont {
     }
 
     public static void printBorder() {
-        System.out.println("----------------------------------------");
+        System.out.println("------------------------------------------");
     }
 
     public static void printInstructions() {
-        System.out.println("----------------------------------------\n"
+        System.out.println("------------------------------------------\n"
                 + "Please follow these steps:\n"
                 + "1. add user\n"
                 + "2. add Book\n"
                 + "3. rate a Book\n"
-                + "----------------------------------------\n");
+                + "------------------------------------------\n");
     }
 
     public static void zeroToExit() {
-        System.out.print("----------------------------------------\n"
+        System.out.print("------------------------------------------\n"
                 + " Type 0 to get back to the menu: ");
         String exit = userInput.next();
+    }
+
+    public static void printSpaces(int noOfSpaces) {
+        for (int i = 0; i < noOfSpaces; i++) {
+            System.out.print(" ");
+        }
     }
 }

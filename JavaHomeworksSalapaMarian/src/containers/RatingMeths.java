@@ -104,17 +104,23 @@ public class RatingMeths {
         if (BookMeth.checkBookName(newBookList, bookName)) {
 
             if (!newSoldBooks.keySet().isEmpty()) {
-                System.out.print("Name           Stars User_Id Description");
+                System.out.print("\n\nName           Stars User_Id Description");
 
-                newSoldBooks.keySet().forEach((k) -> {
+                newSoldBooks.keySet().forEach((Rating k) -> {
                     if (bookName.equals(newSoldBooks.get(k).getBookName())) {
                         System.out.print("\n" + newSoldBooks.get(k).getBookName());
                         int noOfSpacesNeeded = 15 - newSoldBooks.get(k).getBookName().length();
                         MenuCont.printSpaces(noOfSpacesNeeded);
                         System.out.print("  " + k.getStars() + "   " + k.getUser_id() + "  " + k.getDescription());
+
+                        System.out.println("");
+                        MenuCont.printBorder();
+                        System.out.println("Total rating:    "+BookMeth.getBook(newBookList, bookName).getBookRating()
+                        +"\n");
                     }
+
                 });
-                System.out.println("");
+
             } else {
                 System.out.println("No ratings recorded");
             }

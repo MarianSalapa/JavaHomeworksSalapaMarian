@@ -18,7 +18,7 @@ public class MenuCont {
     static List<Book> bookList = new ArrayList<Book>();
     static HashMap<Rating, Book> soldBooks = new HashMap<Rating, Book>();
 
-    public static Scanner userInput = new Scanner(System.in);
+    public static Scanner userInput;
 
     public static void printMenu() {
         String menu1Text = "\n_______________Book_Menu________________"
@@ -92,6 +92,7 @@ public class MenuCont {
     public static void zeroToExit() {
         System.out.print("------------------------------------------\n"
                 + " Type 0 to get back to the menu: ");
+        userInput = new Scanner(System.in);
         String exit = userInput.next();
     }
 
